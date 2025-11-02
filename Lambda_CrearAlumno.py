@@ -4,7 +4,7 @@ def lambda_handler(event, context):
     # Entrada (json)
     tenant_id = event['body']['tenant_id']
     alumno_id = event['body']['alumno_id']
-    alumno_datos = event['alumno_datos']
+    alumno_datos = event['body']['alumno_datos']
     # Proceso
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.Table('t_alumnos')
@@ -19,4 +19,5 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'response': response
     }
+
 
